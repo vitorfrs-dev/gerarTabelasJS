@@ -93,23 +93,32 @@ var people = [
 					"gender": "male"
 				},
 
-
-
 			]
 
+//Variavel que informa se a tabela já foi criada
+var isReady = false;
 
 //função que irá gerar a tabela
 function gerarTabela(array) {
+	//se a tabela não foi criada executa o laço for
+	if(!isReady) {
+		for (let i = 0; i < array.length; i++) {
+			//Variaveis que possuem o valor das propriedades de cada pessoas
+			let name, age, gender;
+			name = array[i].name;
+			age = array[i].age;
+			gender = array[i].gender;
 
-	for (let i = 0; i < array.length; i++) {
-		//Variaveis que possuem o valor das propriedades de cada pessoas
-		let name, age, gender;
-		name = array[i].name;
-		age = array[i].age;
-		gender = array[i].gender;
+			//Chama a função com os dados armazenados nas variáveis acima
+			createRow(name, age, gender);
+		}
 
-		//Chama a função com os dados armazenados nas variáveis acima
-		createRow(name, age, gender);
+		isReady = true; //tabela criada
+	}
+
+	else {
+		//Se a tabela já foi criada 
+		alert('A tabela já foi gerada');
 	}
 }
 
